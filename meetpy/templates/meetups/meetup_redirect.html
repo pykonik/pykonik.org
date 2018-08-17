@@ -1,12 +1,12 @@
 {% extends "base_content.html" %}
 
-{% block title %}Spotkania{% endblock %}
+{% block title %}Spotkania o nr {{ number }}{% endblock %}
 
-{% block og_title %}Spotkania{% endblock %}
+{% block og_title %}Spotkania o nr {{ number }}{% endblock %}
 
 {% block subcontent %}
 <h1>Spotkania</h1>
-{% for meetup in object_list %}
+{% for meetup in meetups %}
 <div class="margin-bottom-big meeting-list" itemscope itemtype="http://schema.org/Event">
     <div class="row">
         <div class="span10 list-caption">
@@ -20,10 +20,10 @@
                   </div>
                 {% endif %}
                 <div class="span2">
-                    <a href="{{ meetup.get_absolute_url }}" class="button button-block">SZCZEGÓŁY</a>
+                    <a href="{% url 'meetups:meetup_detail' number=meetup.number %}" class="button button-block">SZCZEGÓŁY</a>
                 </div>
             </div>
-            <h2><a href="{{ meetup.get_absolute_url }}" itemprop="sameAs"><span itemprop="name">{{ meetup }}</span></a></h2>
+            <h2><a href="{% url 'meetups:meetup_detail' number=meetup.number %}" itemprop="sameAs"><span itemprop="name">{{ meetup }}</span></a></h2>
         </div>
     </div>
     <ul class="unstyled">
