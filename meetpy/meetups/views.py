@@ -3,7 +3,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.syndication import views as syndication_views
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.template.response import TemplateResponse
 from django.utils import feedgenerator
