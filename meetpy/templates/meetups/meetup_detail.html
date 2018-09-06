@@ -14,7 +14,7 @@
 {% block js %}
 <script type="text/javascript" src="{% static 'js/load-image.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-image-gallery.js' %}"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhNca45HD9Q_OMp-g2qNlSLwmOqaKCwXs&amp;sensor=false"></script>
+{% include 'includes/maps_api_script.html' %}
 <script type="text/javascript">
     function initialize() {
         var venue = new google.maps.LatLng({{ object.venue.latitude }}, {{ object.venue.longitude }});
