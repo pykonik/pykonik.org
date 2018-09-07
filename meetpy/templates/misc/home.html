@@ -7,25 +7,7 @@
 {% block og_title %}Home{% endblock %}
 
 {% block js %}
-{% include 'includes/maps_api_script.html' %}
-<script type="text/javascript">
-    function initialize() {
-        var venue = new google.maps.LatLng({{ upcoming_meetup.venue.latitude }}, {{ upcoming_meetup.venue.longitude }});
-        var mapOptions = {
-            center: venue,
-            zoom: 15,
-            disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: false
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        var marker = new google.maps.Marker({
-            position: venue
-        });
-        marker.setMap(map);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+{% include 'includes/maps_api_script.html' with canvas_id='map-canvas' latitude=upcoming_meetup.venue.latitude longitude=upcoming_meetup.venue.longitude zoom=15 disable_ui=1 %}
 {% endblock %}
 
 {% block content %}
